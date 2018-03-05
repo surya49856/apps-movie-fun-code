@@ -8,9 +8,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.superbiz.moviefun.albums.AlbumsUpdateScheduler;
+import org.superbiz.moviefun.albums.AlbumsUpdater;
 import org.superbiz.moviefun.blobstore.BlobStore;
 import org.superbiz.moviefun.blobstore.S3Store;
 import org.superbiz.moviefun.blobstore.ServiceCredentials;
+
+import javax.sql.DataSource;
 
 @SpringBootApplication
 public class Application {
@@ -47,4 +51,9 @@ public class Application {
 
         return new S3Store(s3Client, s3BucketName);
     }
+
+    /*@Bean
+     AlbumsUpdateScheduler albumsUpdateScheduler(AlbumsUpdater albumsUpdater,DataSource dataSource){
+        return new AlbumsUpdateScheduler(albumsUpdater,dataSource);
+    }*/
 }
